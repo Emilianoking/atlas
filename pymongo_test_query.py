@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import pandas as pd
 from pymongo_get_database import get_database
+from subprocess import call
 
 def load_data():
     # Obtener la base de datos
@@ -44,6 +45,19 @@ def display_table():
     scrollbar.pack(side="right", fill="y")
     
     tree.pack(fill="both", expand=True)
+    
+    # Crear botones para redireccionar a otros scripts
+    update_button = ttk.Button(root, text="Actualizar", command=lambda: call(["python", "pymongo_test_actualizar.py"]))
+    update_button.pack(side="left", padx=5, pady=5)
+    
+    delete_button = ttk.Button(root, text="Eliminar", command=lambda: call(["python", "pymongo_test_eliminar.py"]))
+    delete_button.pack(side="left", padx=5, pady=5)
+    
+    insert_button = ttk.Button(root, text="Insertar", command=lambda: call(["python", "pymongo_test_insert.py"]))
+    insert_button.pack(side="left", padx=5, pady=5)
+    
+    refresh_button = ttk.Button(root, text="Actualizar Tabla", command=display_table)
+    refresh_button.pack(side="left", padx=5, pady=5)  # Agregar el botón para actualizar la tabla
     
     # Ejecutar la ventana
     root.mainloop()
