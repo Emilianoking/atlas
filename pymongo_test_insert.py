@@ -34,25 +34,6 @@ def insert_data():
     quantity_entry.delete(0, tk.END)
     ingredients_entry.delete(0, tk.END)
     expiry_date_entry.delete(0, tk.END)
-    
-    # Actualizar la tabla para mostrar los datos insertados
-    display_table()
-
-def display_table():
-    # Obtener la base de datos
-    dbname = get_database()
-    # Obtener la colección
-    collection_name = dbname["user_1_items"]
-    # Obtener todos los documentos de la colección
-    items = collection_name.find()
-    
-    # Limpiar la tabla antes de actualizarla
-    for row in tree.get_children():
-        tree.delete(row)
-    
-    # Insertar los datos en la tabla
-    for item in items:
-        tree.insert("", "end", values=(item["item_name"], item["quantity"], item["ingredients"], item["expiry_date"]))
 
 # Crear una ventana principal
 root = tk.Tk()
@@ -82,17 +63,6 @@ expiry_date_entry.grid(row=3, column=1, padx=5, pady=5)
 # Botón para insertar los datos
 insert_button = ttk.Button(root, text="Insertar", command=insert_data)
 insert_button.grid(row=4, column=0, columnspan=2, padx=5, pady=5)
-
-# Crear una tabla para mostrar los datos
-tree = ttk.Treeview(root, columns=("Item Name", "Quantity", "Ingredients", "Expiry Date"), show="headings")
-tree.heading("Item Name", text="Nombre del ítem")
-tree.heading("Quantity", text="Cantidad")
-tree.heading("Ingredients", text="Ingredientes")
-tree.heading("Expiry Date", text="Fecha de vencimiento")
-tree.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
-
-# Llamar a la función display_table para mostrar los datos existentes
-display_table()
 
 # Ejecutar la ventana principal
 root.mainloop()

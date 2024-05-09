@@ -49,4 +49,4 @@ def display_table():
     root.mainloop()
 
 if __name__ == "__main__":
-    display_table
+    display_table()
