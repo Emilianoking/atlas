@@ -57,7 +57,7 @@ def display_table():
     insert_button.pack(side="left", padx=5, pady=5)
     
     refresh_button = ttk.Button(root, text="Actualizar Tabla", command=display_table)
-    refresh_button.pack(side="left", padx=5, pady=5)  # Agregar el botón para actualizar la tabla
+    refresh_button.pack(side="left", padx=5, pady=5)  
     
     # Ejecutar la ventana
     root.mainloop()

@@ -37,7 +37,7 @@ def insert_data():
 
 # Crear una ventana principal
 root = tk.Tk()
-root.title("Ingreso de Items")
+root.title("Ingreso de alimentos")
 
 # Crear campos de entrada para los datos del ítem
 item_name_label = ttk.Label(root, text="Nombre del ítem:")
